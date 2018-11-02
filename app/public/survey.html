@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0px 50px 0px 50px;
+        }
+
+        .wide {
+            width: 100%;
+        }
+        .no-wide{
+            width: 30%;
+        }
+    </style>
+    <title>FriendFinderSurvey</title>
+</head>
+
+<body>
+
+    <h2>Survey Questions</h1>
+        <hr>
+        <h3>About you</h3>
+
+
+        <form action="/api/friends" method="POST">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter Name (Requiered) ">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Link to Photo Image</label>
+                <input type="link" class="form-control" id="link" placeholder="http://photo.com/example (Requiered)">
+            </div>
+            <hr>
+            <div class="form-group">
+                <h4>Question 1</h4>
+                <label for="exampleFormControlSelect1">Your mind is always buzzing with unexplored ideas and plans.</label>
+                <select class="form-control no-wide" id="question1">
+                    <option>1 (Strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <h4>Question 2</h4>
+                <label for="exampleFormControlSelect1">Generally speaking, you rely more on your experience than your
+                    imagination.</label>
+                <select class="form-control no-wide" id="question2">
+                    <option>1 (Strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <h4>Question 3</h4>
+                <label for="exampleFormControlSelect1">You find it easy to stay relaxed and focused even when there is
+                    some pressure.</label>
+                <select class="form-control no-wide" id="question3">
+                    <option>1 (Strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <h4>Question 4</h4>
+                <label for="exampleFormControlSelect1">You rarely do something just out of sheer curiosity.</label>
+                <select class="form-control no-wide" id="question4">
+                    <option>1 (Strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <h4>Question 5</h4>
+                <label for="exampleFormControlSelect1">People can rarely upset you.</label>
+                <select class="form-control no-wide" id="question5">
+                    <option>1 (Strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <h4>Question 6</h4>
+                <label for="exampleFormControlSelect1">It is often difficult for you to relate to other people’s
+                    feelings.</label>
+                <select class="form-control no-wide" id="question6">
+                    <option>1 (Strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <h4>Question 7</h4>
+                <label for="exampleFormControlSelect1">In a discussion, truth should be more important than people’s
+                    sensitivities.</label>
+                <select class="form-control no-wide" id="question7">
+                    <option>1 (Strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <h4>Question 8</h4>
+                <label for="exampleFormControlSelect1">You rarely get carried away by fantasies and ideas.</label>
+                <select class="form-control no-wide" id="question8">
+                    <option>1 (Strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <h4>Question 9</h4>
+                <label for="exampleFormControlSelect1">You think that everyone’s views should be respected regardless
+                    of whether they are supported by facts or not.</label>
+                <select class="form-control no-wide" id="question9">
+                    <option>1 (Strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <h4>Question 10</h4>
+                <label for="exampleFormControlSelect1">You feel more energetic after spending time with a group of
+                    people.</label>
+                <select class="form-control no-wide" id="question10">
+                    <option>1 (Strongly disagree)</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 (Strongly Agree)</option>
+                </select>
+            </div>
+            <br>
+            <button class="btn btn-primary btn-lg wide" type="submit">Submit</button>
+        </form>
+
+
+
+        <hr>
+        <div style="display:inline; font-size: 2vw; ">
+            <a href="/api/friends">API Friend List</a>
+            |
+            <a href="https://github.com/SebastianOrtega/friend_finder">GitHub Repo</a>
+        </div>
+</body>
+
+</html>
