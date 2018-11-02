@@ -9,6 +9,65 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Added a link to Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#boton").on("click", function (event) {
+                // Make sure to preventDefault on a submit event.
+                event.preventDefault();
+
+                console.log("ENTRO!");
+                var newFriend = {
+                    name: $("#name").val().trim(),
+                    photo: $("#link").val().trim(),
+                    scores: [
+                        parseInt($("#question1 option:selected").val().trim()),
+                        parseInt($("#question2 option:selected").val().trim()),
+                        parseInt($("#question3 option:selected").val().trim()),
+                        parseInt($("#question4 option:selected").val().trim()),
+                        parseInt($("#question5 option:selected").val().trim()),
+                        parseInt($("#question6 option:selected").val().trim()),
+                        parseInt($("#question7 option:selected").val().trim()),
+                        parseInt($("#question8 option:selected").val().trim()),
+                        parseInt($("#question9 option:selected").val().trim()),
+                        parseInt($("#question10 option:selected").val().trim())
+                    ]
+                }
+                if (newFriend.name == "") {
+                    alert("Name can't be blank");
+                    return;
+                }
+                if (newFriend.link == "") {
+                    alert("Link tp photo can't be blank");
+                    return;
+                }
+                for (var n = 0; n < 5; n++) {
+                    if (isNaN(newFriend.scores[n])) {
+                        alert("Question " + n + " is blank");
+                        return;
+                    }
+                }
+
+
+
+                // Send the POST request.
+                $.ajax("/api/friends", {
+                    type: "POST",
+                    data: newFriend
+                }).then(
+                    function () {
+
+                        // Reload the page to get the updated list
+                        //location.reload();
+                    }
+                );
+                console.log(newFriend);
+            });
+
+
+        });
+    </script>
     <style>
         body {
             margin: 0px 50px 0px 50px;
@@ -31,7 +90,7 @@
         <h3>About you</h3>
 
 
-        <form action="/api/friends" method="POST">
+        <form>
             <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
                 <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter Name (Requiered) ">
@@ -45,6 +104,7 @@
                 <h4>Question 1</h4>
                 <label for="exampleFormControlSelect1">Your mind is always buzzing with unexplored ideas and plans.</label>
                 <select class="form-control no-wide" id="question1">
+                    <option value="" selected disabled hidden>Choose here</option>
                     <option>1 (Strongly disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -57,6 +117,7 @@
                 <label for="exampleFormControlSelect1">Generally speaking, you rely more on your experience than your
                     imagination.</label>
                 <select class="form-control no-wide" id="question2">
+                    <option value="" selected disabled hidden>Choose here</option>
                     <option>1 (Strongly disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -69,6 +130,7 @@
                 <label for="exampleFormControlSelect1">You find it easy to stay relaxed and focused even when there is
                     some pressure.</label>
                 <select class="form-control no-wide" id="question3">
+                    <option value="" selected disabled hidden>Choose here</option>
                     <option>1 (Strongly disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -80,6 +142,7 @@
                 <h4>Question 4</h4>
                 <label for="exampleFormControlSelect1">You rarely do something just out of sheer curiosity.</label>
                 <select class="form-control no-wide" id="question4">
+                    <option value="" selected disabled hidden>Choose here</option>
                     <option>1 (Strongly disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -91,6 +154,7 @@
                 <h4>Question 5</h4>
                 <label for="exampleFormControlSelect1">People can rarely upset you.</label>
                 <select class="form-control no-wide" id="question5">
+                    <option value="" selected disabled hidden>Choose here</option>
                     <option>1 (Strongly disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -103,6 +167,7 @@
                 <label for="exampleFormControlSelect1">It is often difficult for you to relate to other people’s
                     feelings.</label>
                 <select class="form-control no-wide" id="question6">
+                    <option value="" selected disabled hidden>Choose here</option>
                     <option>1 (Strongly disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -115,6 +180,7 @@
                 <label for="exampleFormControlSelect1">In a discussion, truth should be more important than people’s
                     sensitivities.</label>
                 <select class="form-control no-wide" id="question7">
+                    <option value="" selected disabled hidden>Choose here</option>
                     <option>1 (Strongly disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -126,6 +192,7 @@
                 <h4>Question 8</h4>
                 <label for="exampleFormControlSelect1">You rarely get carried away by fantasies and ideas.</label>
                 <select class="form-control no-wide" id="question8">
+                    <option value="" selected disabled hidden>Choose here</option>
                     <option>1 (Strongly disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -138,6 +205,7 @@
                 <label for="exampleFormControlSelect1">You think that everyone’s views should be respected regardless
                     of whether they are supported by facts or not.</label>
                 <select class="form-control no-wide" id="question9">
+                    <option value="" selected disabled hidden>Choose here</option>
                     <option>1 (Strongly disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -150,6 +218,7 @@
                 <label for="exampleFormControlSelect1">You feel more energetic after spending time with a group of
                     people.</label>
                 <select class="form-control no-wide" id="question10">
+                    <option value="" selected disabled hidden>Choose here</option>
                     <option>1 (Strongly disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -158,7 +227,7 @@
                 </select>
             </div>
             <br>
-            <button class="btn btn-primary btn-lg wide" type="submit">Submit</button>
+            <button class="btn btn-primary btn-lg wide" id="boton" type="submit">Submit</button>
         </form>
 
 
