@@ -56,9 +56,10 @@
                     type: "POST",
                     data: newFriend
                 }).then(
-                    function () {
+                    function (data, status) {
 
-                        // Reload the page to get the updated list
+                        console.log(data);
+                        alert("Your best friend match is: " + data.name);
                         //location.reload();
                     }
                 );

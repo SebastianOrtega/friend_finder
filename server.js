@@ -13,9 +13,6 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Star Wars Characters (DATA)
-// =============================================================
-
 // Routes
 // =============================================================
 
@@ -33,41 +30,32 @@ app.get("/api/friends", function(req, res) {
 });
 
 app.post("/api/friends", function(req, res) {
-  res.send("POST request to the homepage");
-  friends.push(req.body);
-  console.log(req.body);
-});
-
-// Displays a single character, or returns false
-app.get("/api/characters/:character", function(req, res) {
-  var chosen = req.params.character;
-
-  console.log(chosen);
-
-  for (var i = 0; i < characters.length; i++) {
-    if (chosen === characters[i].routeName) {
-      return res.json(characters[i]);
+  //compare with existing users
+  var result;
+  var bestMatch = {
+    score: 100,
+    index: 0
+  };
+  for (var n = 0; n < friends.length; n++) {
+    result = 0;
+    for (var i = 0; i < 10; i++) {
+      result += Math.abs(req.body.scores[i] - friends[n].scores[i]);
+    }
+    console.log(
+      "Comparacion user " + n + ": " + result + "  name: " + friends[n].name
+    );
+    if (result < bestMatch.score) {
+      bestMatch.index = n;
+      bestMatch.score = result;
     }
   }
+  //Add it to the frends array
+  friends.push(req.body);
 
-  return res.json(false);
-});
-
-// Create New Characters - takes in JSON input
-app.post("/api/characters", function(req, res) {
-  // req.body hosts is equal to the JSON post sent from the user
-  // This works because of our body parsing middleware
-  var newcharacter = req.body;
-
-  // Using a RegEx Pattern to remove spaces from newCharacter
-  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
-
-  console.log(newcharacter);
-
-  characters.push(newcharacter);
-
-  res.json(newcharacter);
+  console.log(req.body);
+  console.log("best Match: " + JSON.stringify(bestMatch));
+  res.send(friends[bestMatch.index]);
+  //return res.json(friends[bestMatch.index]);
 });
 
 // Starts the server to begin listening
